@@ -69,10 +69,6 @@ class MainController extends AbstractController
             $req->get('address')
         );
 
-//        $this->em->persist($budgetRequest);
-//        $this->em->flush();
-
-
         return $this->json([
             'message' => 'Budget request created'
             /*'id' => $budgetRequest->getId(),
