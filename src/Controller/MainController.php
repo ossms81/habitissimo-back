@@ -60,26 +60,16 @@ class MainController extends AbstractController
             $this->budgetRequestRepository,
             $this->userRepository,
             $this->em)
-        )->execute(
-            $req->get('title'),
-            $req->get('description'),
-            $req->get('category'),
-            $req->get('email'),
-            $req->get('phone'),
-            $req->get('address')
-        );
+            )->execute(
+                $req->get('title'),
+                $req->get('description'),
+                $req->get('category'),
+                $req->get('email'),
+                $req->get('phone'),
+                $req->get('address')
+            );
 
         return $this->json([
             'message' => 'Budget request created'
-            /*'id' => $budgetRequest->getId(),
-            'title' => $budgetRequest->getTitle(),
-            'description' => $budgetRequest->getDescription(),
-            'category' => $budgetRequest->getCategory(),
-            'user' => [
-                'id' => $user->getId(),
-                'email' => $user->getEmail(),
-                'phone' => $user->getPhone(),
-                'address' => $user->getAddress(),
-            ],*/
         ]);
     }}

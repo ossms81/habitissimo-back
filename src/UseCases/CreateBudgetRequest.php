@@ -33,11 +33,9 @@ class CreateBudgetRequest
      * @param UserRepository $userRepository
      * @param EntityManagerInterface $em
      */
-    public function __construct(
-        BudgetRequestRepository $budgetRequestRepository,
-        UserRepository $userRepository,
-        EntityManagerInterface $em
-    )
+    public function __construct(BudgetRequestRepository $budgetRequestRepository,
+                                UserRepository $userRepository,
+                                EntityManagerInterface $em)
     {
         $this->budgetRequestRepository = $budgetRequestRepository;
         $this->userRepository = $userRepository;
@@ -53,14 +51,12 @@ class CreateBudgetRequest
      * @param $address
      * @return void
      */
-    public function execute(
-        $title,
-        $description,
-        $category,
-        $email,
-        $phone,
-        $address
-    )
+    public function execute($title,
+                            $description,
+                            $category,
+                            $email,
+                            $phone,
+                            $address)
     {
         $this->saveBudgetRequest(
             $this->addBudgetRequest(
@@ -84,11 +80,9 @@ class CreateBudgetRequest
      * @param $address
      * @return User
      */
-    private function addUser(
-        $email,
-        $phone,
-        $address
-    ): User
+    private function addUser($email,
+                             $phone,
+                             $address): User
     {
         return User::create(
             $email,
@@ -104,12 +98,10 @@ class CreateBudgetRequest
      * @param User $user
      * @return BudgetRequest
      */
-    private function addBudgetRequest(
-        $title,
-        $description,
-        $category,
-        User $user
-    )
+    private function addBudgetRequest($title,
+                                      $description,
+                                      $category,
+                                      User $user)
     {
         return BudgetRequest::create(
             $title,

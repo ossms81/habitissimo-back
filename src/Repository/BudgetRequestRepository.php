@@ -16,11 +16,18 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BudgetRequestRepository extends ServiceEntityRepository
 {
+    /**
+     * BudgetRequestRepository constructor.
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, BudgetRequest::class);
     }
 
+    /**
+     * @param BudgetRequest $budgetRequest
+     */
     public function save(BudgetRequest $budgetRequest)
     {
         try {

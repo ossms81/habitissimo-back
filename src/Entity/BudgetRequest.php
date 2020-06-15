@@ -51,7 +51,11 @@ class BudgetRequest
      * @param $User
      * @param $status
      */
-    private function __construct($title, $description, $category, $User, $status)
+    private function __construct($title,
+                                 $description,
+                                 $category,
+                                 $User,
+                                 $status)
     {
         $this->title = $title;
         $this->description = $description;
@@ -60,7 +64,11 @@ class BudgetRequest
         $this->status = $status;
     }
 
-    public static function create($title, $description, $category, $User, $status = 'pending')
+    public static function create($title,
+                                  $description,
+                                  $category,
+                                  $User,
+                                  $status = 'pending')
     {
         return new BudgetRequest($title, $description, $category, $User, $status);
     }

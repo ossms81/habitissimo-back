@@ -45,7 +45,9 @@ class User
      * @param $phone
      * @param $address
      */
-    private function __construct($email, $phone, $address)
+    private function __construct($email,
+                                 $phone,
+                                 $address)
     {
         $this->email = $email;
         $this->phone = $phone;
@@ -53,7 +55,9 @@ class User
         $this->budgetRequests = new ArrayCollection();
     }
 
-    public static function create($email, $phone, $address)
+    public static function create($email,
+                                  $phone,
+                                  $address)
     {
         return new User($email, $phone, $address);
     }
