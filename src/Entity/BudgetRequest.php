@@ -38,10 +38,32 @@ class BudgetRequest
     private $status;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="budgetRequests")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="budgetRequests", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $User;
+
+    /**
+     * BudgetRequest constructor.
+     * @param $title
+     * @param $description
+     * @param $category
+     * @param $User
+     * @param $status
+     */
+    private function __construct($title, $description, $category, $User, $status)
+    {
+        $this->title = $title;
+        $this->description = $description;
+        $this->category = $category;
+        $this->User = $User;
+        $this->status = $status;
+    }
+
+    public static function create($title, $description, $category, $User, $status = 'pending')
+    {
+        return new BudgetRequest($title, $description, $category, $User, $status);
+    }
 
     public function getId(): ?int
     {

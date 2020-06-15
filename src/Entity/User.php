@@ -39,9 +39,23 @@ class User
      */
     private $budgetRequests;
 
-    public function __construct()
+    /**
+     * User constructor.
+     * @param $email
+     * @param $phone
+     * @param $address
+     */
+    private function __construct($email, $phone, $address)
     {
+        $this->email = $email;
+        $this->phone = $phone;
+        $this->address = $address;
         $this->budgetRequests = new ArrayCollection();
+    }
+
+    public static function create($email, $phone, $address)
+    {
+        return new User($email, $phone, $address);
     }
 
     public function getId(): ?int

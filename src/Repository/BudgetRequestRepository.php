@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\BudgetRequest;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +19,16 @@ class BudgetRequestRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, BudgetRequest::class);
+    }
+
+    public function save(BudgetRequest $budgetRequest)
+    {
+        try {
+            $this->_em->persist($budgetRequest);
+            $this->_em->flush();
+        } catch (OptimisticLockException $e) {
+        } catch (ORMException $e) {
+        }
     }
 
     // /**

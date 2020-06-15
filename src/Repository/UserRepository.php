@@ -19,6 +19,23 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
+    /**
+     * @param User $user
+     * @return User|null
+     */
+    public function updateIfExists(User $user)
+    {
+        if ($u = $this->findOneBy(['email' => $user->getEmail()]))
+        {
+            $u->setPhone($user->getPhone());
+            $u->setAddress($user->getAddress());
+
+            $user = $u;
+        }
+
+        return $user;
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
